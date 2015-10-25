@@ -103,7 +103,7 @@ crazy <- function() {
 [1] 3.14
 ```
 
-To reiterate the concept the next section explains in more detail the role and behaviour of the “superassignment” operator which allows the programmer to modify a variable declared outside of the current function in which the reference to the variable is made.
+To reiterate the concept the next section explains in more detail the role and behaviour of the "superassignment" operator which allows the programmer to modify a variable declared outside of the current function in which the reference to the variable is made.
 In the simplest example consider how variable `x` changes when the `crazy()` function is called.
 
 ```R
@@ -161,13 +161,13 @@ Perhaps the crude graphic can illuminate the effects of lexical scoping on varia
 +———————————+
 ```
 
-Flow of execution is `(1a) -> [(2) & (3a)] -> [(3b) & (1b)] -> (1a)`. I used the labels “inner function” and “outer function” because the same rules apply to nested functions.
+Flow of execution is `(1a) -> [(2) & (3a)] -> [(3b) & (1b)] -> (1a)`. I used the labels "inner function" and "outer function" because the same rules apply to nested functions.
 
 ## Unit tests (with expected output) for Programming Assignment 2
 
 ### Example
 ```R
->    source(“cachematrix.R”)
+>    source("cachematrix.R")
 >    amatrix = makeCacheMatrix(matrix(c(1,2,3,4), nrow=2, ncol=2))
 >    amatrix$get()         # Returns original matrix
      [,1] [,2]
