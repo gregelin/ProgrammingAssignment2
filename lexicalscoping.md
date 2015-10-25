@@ -146,19 +146,22 @@ x <<- 42      # assigns the value 42 to variable `x` in the containing environme
 Perhaps the crude graphic can illuminate the effects of lexical scoping on variables a better than mere words.
 ```
 +———————————+
-|  (1a) x <- 0  becomes 42 |   outer function / by default the global lexical scope is an anonymous function
-|          (1b) x <- 42 by        |
-|               (3b) x <<- 42      |
-| +—————————–+ |
-| |     (2) x <- 3.14            |  |   inner function
-| |     (3a) x <<- 42 does  |  |
-| |              not affect        |  |
-| |              (2)                  |  |
-| +—————————–+ |
+|  (1a) x <- 0  becomes 42 
+|  outer function / by default the global lexical scope is an anonymous function
+|  (1b) x <- 42 by         
+|
+|  (3b) x <<- 42           
+|
+| +—————————–+ 
+| |  (2) x <- 3.14      
+| |  inner function
+| |  (3a) x <<- 42 does not affect (2)
+| |
+| +—————————–+
 +———————————+
 ```
 
-Flow of execution is (1a) -> [(2) & (3a)] -> [(3b) & (1b)] -> (1a). I used the labels “inner function” and “outer function” because the same rules apply to nested functions.
+Flow of execution is `(1a) -> [(2) & (3a)] -> [(3b) & (1b)] -> (1a)`. I used the labels “inner function” and “outer function” because the same rules apply to nested functions.
 
 ## Unit tests (with expected output) for Programming Assignment 2
 
