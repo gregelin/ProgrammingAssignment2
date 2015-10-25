@@ -48,7 +48,7 @@ getting cached data
 
 Understanding the concepts in terms of the behaviour of the two functions takes more than a few minutes because you have to not only read the existing exemplar functions but take some time to play with the functions. Often seeing the code in action is more helpful than reading a chapter about lexical scoping. 
 
-Variable `m` is declared uniquely in both functions and are allocated separate addresses in memory. In function makeVector() you’ll notice variable `m` is declared immediately and assigned the value NULL using the standard assignment operator (`<-`). However, the `set` functions defined within the containing makeVector() function require the special assignment operator (`<<–`) to update the value of variable `m`; it is important to remember variable m was declared and initialised by makeVector(). 
+Variable `m` is declared uniquely in both functions and are allocated separate addresses in memory. In function makeVector() you’ll notice variable `m` is declared immediately and assigned the value NULL using the standard assignment operator (`<-`). However, the `set` functions defined within the containing `makeVector()` function require the special assignment operator (`<<–`) to update the value of variable `m`; it is important to remember variable `m` was declared and initialised by `makeVector()`. 
 
 Had functions `set()` and `setmean()` not used the special assignment operator, these functions would have allocated memory to store the value and labelled the address as `m`. The variables named `m` would effectively be isolated and distinct variables.
 
@@ -60,13 +60,13 @@ superassignment operator: `<<-`
 
 ```R
 crazy <- function() {
-  x <<- 3.14                   # variable x in the containing environment (global in this case) is updated to be 3.14
-  print(x)                        # since no local variable ‘x’ exists within function ‘crazy’ R searches the containing environments
- { print(x);                     # this is to demonstrate the function, not a code block, is the smallest environment in R
-   x <- 42; print(x)         # local variable ‘x’ is declared (created) and assigned the value 42; overrides the variable ‘x’ in
- }                                  # the containing environment
-  print(x)                       # since local variable ‘x’ now exists within the function there is no need to search the containing
-}                                   # environment (global in this case)
+  x <<- 3.14           # variable x in the containing environment (global in this case) is updated to be 3.14
+  print(x)             # since no local variable ‘x’ exists within function ‘crazy’ R searches the containing environments
+ { print(x);           # this is to demonstrate the function, not a code block, is the smallest environment in R
+   x <- 42; print(x)   # local variable ‘x’ is declared (created) and assigned the value 42; overrides the variable ‘x’ in
+ }                     # the containing environment
+  print(x)             # since local variable ‘x’ now exists within the function there is no need to search the containing
+}                      # environment (global in this case)
 > x <- 0
 > crazy()
 3.14
@@ -108,25 +108,25 @@ In the simplest example consider how variable ‘x’ changes when the crazy() f
 
 ```R
 # Declare and define a function named crazy()
-crazy <- function() {                # create a new environment with a local variable ‘x’ and access to another variable ‘x’
-                                                # declared somewhere outside this function
-  x <- 3.14                                # assign the numeric value 3.14 to local variable ‘x’
-  print(x)                                   # output the current value of local variable ‘x’ (1)
-   { print(x);                                 # output the current value of local variable ‘x’ (2)
-      x <<- 42;                              # assign the numeric value 42 to variable ‘x’ declared outside this function (3)
-      print(x)                                 # output the current value of local variable ‘x’ (4)
+crazy <- function() {    # create a new environment with a local variable ‘x’ and access to another variable ‘x’
+                         # declared somewhere outside this function
+  x <- 3.14              # assign the numeric value 3.14 to local variable ‘x’
+  print(x)               # output the current value of local variable ‘x’ (1)
+   { print(x);           # output the current value of local variable ‘x’ (2)
+      x <<- 42;          # assign the numeric value 42 to variable ‘x’ declared outside this function (3)
+      print(x)           # output the current value of local variable ‘x’ (4)
    }
-  print(x)                                   # output the current value of local variable ‘x’ (5)
+  print(x)               # output the current value of local variable ‘x’ (5)
 }
-> x <- 0                                    # Declare and define a local variable named ‘x’
-> x                                           # output the current value of local variable ‘x’
+> x <- 0                 # Declare and define a local variable named ‘x’
+> x                      # output the current value of local variable ‘x’
 0
-> crazy()                                  # Call function crazy()
-3.14                                         # (1) inner variable ‘x’
-3.14                                         # (2) inner variable ‘x’
-3.14                                         # (4) inner variable ‘x’
-3.14                                         # (5) inner variable ‘x’
-> x                                           # (3) containing environment variable ‘x’
+> crazy()                # Call function crazy()
+3.14                     # (1) inner variable ‘x’
+3.14                     # (2) inner variable ‘x’
+3.14                     # (4) inner variable ‘x’
+3.14                     # (5) inner variable ‘x’
+> x                      # (3) containing environment variable ‘x’
 42
 ```
 
@@ -139,8 +139,8 @@ x <- 3.14
 is treated as though it is as shown below.
 
 ```R
-x <- 3.24  # assigns the value 3.14 to local variable ‘x’ not the variable ‘x’ in the containing environment
-x <<- 42  # assigns the value 42 to variable ‘x’ in the containing environment
+x <- 3.24     # assigns the value 3.14 to local variable ‘x’ not the variable ‘x’ in the containing environment
+x <<- 42      # assigns the value 42 to variable ‘x’ in the containing environment
 ```
 
 Perhaps the crude graphic can illuminate the effects of lexical scoping on variables a better than mere words.
@@ -174,11 +174,11 @@ Flow of execution is (1a) -> [(2) & (3a)] -> [(3b) & (1b)] -> (1a). I used the l
     [,1] [,2]
 [1,]   -2  1.5
 [2,]    1 -0.5
- >  amatrix$getinverse()  # Returns matrix inverse
+ >  amatrix$getinverse()   # Returns matrix inverse
      [,1] [,2]
 [1,]   -2  1.5
 [2,]    1 -0.5
- >  cacheSolve(amatrix)   # Returns cached matrix inverse using previously computed matrix inverse
+ >  cacheSolve(amatrix)    # Returns cached matrix inverse using previously computed matrix inverse
 getting cached data
      [,1] [,2]
 [1,]   -2  1.5
