@@ -104,7 +104,7 @@ crazy <- function() {
 ```
 
 To reiterate the concept the next section explains in more detail the role and behaviour of the “superassignment” operator which allows the programmer to modify a variable declared outside of the current function in which the reference to the variable is made.
-In the simplest example consider how variable `x` changes when the crazy() function is called.
+In the simplest example consider how variable `x` changes when the `crazy()` function is called.
 
 ```R
 # Declare and define a function named crazy()
