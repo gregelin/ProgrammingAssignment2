@@ -130,7 +130,7 @@ crazy <- function() {    # create a new environment with a local variable `x` an
 42
 ```
 
-*The curly braces (brackets) are intended to highlight the fact in R the smallest unit of lexical scoping is the function.* Unlike some programming languages such as C that allow block-level variable scope, R treats a block enclosed in brackets as part of the nearest function.
+**The curly braces (brackets) are intended to highlight the fact in R the smallest unit of lexical scoping is the function.** Unlike some programming languages such as C that allow block-level variable scope, R treats a block enclosed in brackets as part of the nearest function.
 
 ```R
 x <- 3.14
