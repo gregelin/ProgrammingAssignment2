@@ -85,7 +85,7 @@ The fourth `print()` statement uses the variable `x` which exists within the fun
 
 I added a call to variable `x` after the function `crazy()` returns to show it keeps the new value assigned to it by the super-assignment operator inside function `crazy()`.
 
-The super-assignment operator does not update a variable of the same name inside an inner function but the innermost environment inherits any changes unless a local variable of the same name exists within the inner function as demonstrated by x <- 42; print(x) and print(x).
+The super-assignment operator does not update a variable of the same name inside an inner function but the innermost environment inherits any changes unless a local variable of the same name exists within the inner function as demonstrated by `x <- 42`; `print(x)` and `print(x)`.
 Furthermore, if a variable named `x` had existed inside function `crazy()` and preceded the call to the super-assignment operator, the results would be as shown in the next example.
 
 ```R
