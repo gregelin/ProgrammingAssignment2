@@ -73,20 +73,20 @@ crazy <- function() {
 3.14
 42
 42
-> x   # variable `x` outside of the function its updated value after the first statement within function ‘crazy()’
+> x   # variable `x` outside of the function its updated value after the first statement within function `crazy()`
 [1] 3.14
 ```
 
-The first two print() statements use the variable `x` in the containing environment, as no local variable `x` exists at the moment, which has been updated from x <- 0 to x <- 3.14 via x <<- 3.14 inside function ‘crazy()’.
+The first two `print()` statements use the variable `x` in the containing environment, as no local variable `x` exists at the moment, which has been updated from `x <- 0` to `x <- 3.14` via `x <<- 3.14` inside function `crazy()`.
 
 The third print() statement uses the variable `x` just created by the preceding assignment statement x <- 42 which causes the containing environment not to be searched unlike the first and second print() statements.
 
 The fourth print() statement uses the variable `x` which exists within the function because the x <- 42 now masks access, at least for anything other than the super-assignment operator, to the containing environment’s variable `x`.
 
-I added a call to variable `x` after the function ‘crazy()’ returns to show it keeps the new value assigned to it by the super-assignment operator inside function ‘crazy()’.
+I added a call to variable `x` after the function `crazy()` returns to show it keeps the new value assigned to it by the super-assignment operator inside function `crazy()`.
 
 The super-assignment operator does not update a variable of the same name inside an inner function but the innermost environment inherits any changes unless a local variable of the same name exists within the inner function as demonstrated by x <- 42; print(x) and print(x).
-Furthermore, if a variable named `x` had existed inside function ‘crazy()’ and preceded the call to the super-assignment operator, the results would be as shown in the next example.
+Furthermore, if a variable named `x` had existed inside function `crazy()` and preceded the call to the super-assignment operator, the results would be as shown in the next example.
 
 ```R
 crazy <- function() {
