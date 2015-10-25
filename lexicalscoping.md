@@ -79,9 +79,9 @@ crazy <- function() {
 
 The first two `print()` statements use the variable `x` in the containing environment, as no local variable `x` exists at the moment, which has been updated from `x <- 0` to `x <- 3.14` via `x <<- 3.14` inside function `crazy()`.
 
-The third print() statement uses the variable `x` just created by the preceding assignment statement x <- 42 which causes the containing environment not to be searched unlike the first and second print() statements.
+The third `print()` statement uses the variable `x` just created by the preceding assignment statement x <- 42 which causes the containing environment not to be searched unlike the first and second `print()` statements.
 
-The fourth print() statement uses the variable `x` which exists within the function because the x <- 42 now masks access, at least for anything other than the super-assignment operator, to the containing environment’s variable `x`.
+The fourth `print()` statement uses the variable `x` which exists within the function because the x <- 42 now masks access, at least for anything other than the super-assignment operator, to the containing environment’s variable `x`.
 
 I added a call to variable `x` after the function `crazy()` returns to show it keeps the new value assigned to it by the super-assignment operator inside function `crazy()`.
 
