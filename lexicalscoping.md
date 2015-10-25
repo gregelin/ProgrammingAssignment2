@@ -61,11 +61,11 @@ superassignment operator: `<<-`
 ```R
 crazy <- function() {
   x <<- 3.14           # variable x in the containing environment (global in this case) is updated to be 3.14
-  print(x)             # since no local variable ‘x’ exists within function ‘crazy’ R searches the containing environments
+  print(x)             # since no local variable `x` exists within function ‘crazy’ R searches the containing environments
  { print(x);           # this is to demonstrate the function, not a code block, is the smallest environment in R
-   x <- 42; print(x)   # local variable ‘x’ is declared (created) and assigned the value 42; overrides the variable ‘x’ in
+   x <- 42; print(x)   # local variable `x` is declared (created) and assigned the value 42; overrides the variable `x` in
  }                     # the containing environment
-  print(x)             # since local variable ‘x’ now exists within the function there is no need to search the containing
+  print(x)             # since local variable `x` now exists within the function there is no need to search the containing
 }                      # environment (global in this case)
 > x <- 0
 > crazy()
@@ -73,20 +73,20 @@ crazy <- function() {
 3.14
 42
 42
-> x   # variable ‘x’ outside of the function its updated value after the first statement within function ‘crazy()’
+> x   # variable `x` outside of the function its updated value after the first statement within function ‘crazy()’
 [1] 3.14
 ```
 
-The first two print() statements use the variable ‘x’ in the containing environment, as no local variable ‘x’ exists at the moment, which has been updated from x <- 0 to x <- 3.14 via x <<- 3.14 inside function ‘crazy()’.
+The first two print() statements use the variable `x` in the containing environment, as no local variable `x` exists at the moment, which has been updated from x <- 0 to x <- 3.14 via x <<- 3.14 inside function ‘crazy()’.
 
-The third print() statement uses the variable ‘x’ just created by the preceding assignment statement x <- 42 which causes the containing environment not to be searched unlike the first and second print() statements.
+The third print() statement uses the variable `x` just created by the preceding assignment statement x <- 42 which causes the containing environment not to be searched unlike the first and second print() statements.
 
-The fourth print() statement uses the variable ‘x’ which exists within the function because the x <- 42 now masks access, at least for anything other than the super-assignment operator, to the containing environment’s variable ‘x’.
+The fourth print() statement uses the variable `x` which exists within the function because the x <- 42 now masks access, at least for anything other than the super-assignment operator, to the containing environment’s variable `x`.
 
-I added a call to variable ‘x’ after the function ‘crazy()’ returns to show it keeps the new value assigned to it by the super-assignment operator inside function ‘crazy()’.
+I added a call to variable `x` after the function ‘crazy()’ returns to show it keeps the new value assigned to it by the super-assignment operator inside function ‘crazy()’.
 
 The super-assignment operator does not update a variable of the same name inside an inner function but the innermost environment inherits any changes unless a local variable of the same name exists within the inner function as demonstrated by x <- 42; print(x) and print(x).
-Furthermore, if a variable named ‘x’ had existed inside function ‘crazy()’ and preceded the call to the super-assignment operator, the results would be as shown in the next example.
+Furthermore, if a variable named `x` had existed inside function ‘crazy()’ and preceded the call to the super-assignment operator, the results would be as shown in the next example.
 
 ```R
 crazy <- function() {
@@ -104,29 +104,29 @@ crazy <- function() {
 ```
 
 To reiterate the concept the next section explains in more detail the role and behaviour of the “superassignment” operator which allows the programmer to modify a variable declared outside of the current function in which the reference to the variable is made.
-In the simplest example consider how variable ‘x’ changes when the crazy() function is called.
+In the simplest example consider how variable `x` changes when the crazy() function is called.
 
 ```R
 # Declare and define a function named crazy()
-crazy <- function() {    # create a new environment with a local variable ‘x’ and access to another variable ‘x’
+crazy <- function() {    # create a new environment with a local variable `x` and access to another variable `x`
                          # declared somewhere outside this function
-  x <- 3.14              # assign the numeric value 3.14 to local variable ‘x’
-  print(x)               # output the current value of local variable ‘x’ (1)
-   { print(x);           # output the current value of local variable ‘x’ (2)
-      x <<- 42;          # assign the numeric value 42 to variable ‘x’ declared outside this function (3)
-      print(x)           # output the current value of local variable ‘x’ (4)
+  x <- 3.14              # assign the numeric value 3.14 to local variable `x`
+  print(x)               # output the current value of local variable `x` (1)
+   { print(x);           # output the current value of local variable `x` (2)
+      x <<- 42;          # assign the numeric value 42 to variable `x` declared outside this function (3)
+      print(x)           # output the current value of local variable `x` (4)
    }
-  print(x)               # output the current value of local variable ‘x’ (5)
+  print(x)               # output the current value of local variable `x` (5)
 }
-> x <- 0                 # Declare and define a local variable named ‘x’
-> x                      # output the current value of local variable ‘x’
+> x <- 0                 # Declare and define a local variable named `x`
+> x                      # output the current value of local variable `x`
 0
 > crazy()                # Call function crazy()
-3.14                     # (1) inner variable ‘x’
-3.14                     # (2) inner variable ‘x’
-3.14                     # (4) inner variable ‘x’
-3.14                     # (5) inner variable ‘x’
-> x                      # (3) containing environment variable ‘x’
+3.14                     # (1) inner variable `x`
+3.14                     # (2) inner variable `x`
+3.14                     # (4) inner variable `x`
+3.14                     # (5) inner variable `x`
+> x                      # (3) containing environment variable `x`
 42
 ```
 
@@ -139,8 +139,8 @@ x <- 3.14
 is treated as though it is as shown below.
 
 ```R
-x <- 3.24     # assigns the value 3.14 to local variable ‘x’ not the variable ‘x’ in the containing environment
-x <<- 42      # assigns the value 42 to variable ‘x’ in the containing environment
+x <- 3.24     # assigns the value 3.14 to local variable `x` not the variable `x` in the containing environment
+x <<- 42      # assigns the value 42 to variable `x` in the containing environment
 ```
 
 Perhaps the crude graphic can illuminate the effects of lexical scoping on variables a better than mere words.
