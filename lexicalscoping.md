@@ -1,6 +1,8 @@
 # Understanding Lexical Scoping in R – Great guidance by community TA in Coursera
 
-## Gregory D. HorneCommunity TA· 5 days ago 
+## Gregory D. Horne, Community TA
+
+(Note: This is easier to read version of: https://asitarrives.wordpress.com/2014/10/18/understanding-lexical-scoping-in-r-great-guidance-for-community-ta-in-coursera/)
 
 I will show you the output from the sample functions to illustrate their behaviour. From the output you should be able to discern the logic within the R code. The functions we are expected to implement to handle invertible matrices follows the exact same logic. The sample run show below can be adapted to the new functions for matrices and the behaviour will be the same.
 
@@ -46,15 +48,15 @@ getting cached data
 
 Understanding the concepts in terms of the behaviour of the two functions takes more than a few minutes because you have to not only read the existing exemplar functions but take some time to play with the functions. Often seeing the code in action is more helpful than reading a chapter about lexical scoping. 
 
-Variable m is declared uniquely in both functions and are allocated separate addresses in memory. In function makeVector() you’ll notice variable m is declared immediately and assigned the value NULL using the standard assignment operator (<-). However, the “set” functions defined within the containing makeVector() function require the special assignment operator (<–) to update the value of variable m; it is important to remember variable m was declared and initialised by makeVector(). 
+Variable `m` is declared uniquely in both functions and are allocated separate addresses in memory. In function makeVector() you’ll notice variable `m` is declared immediately and assigned the value NULL using the standard assignment operator (`<-`). However, the `set` functions defined within the containing makeVector() function require the special assignment operator (`<<–`) to update the value of variable `m`; it is important to remember variable m was declared and initialised by makeVector(). 
 
-Had functions set() and setmean() not used the special assignment operator, these functions would have allocated memory to store the value and labelled the address as m. The variables named m would effectively be isolated and distinct variables.
+Had functions `set()` and `setmean()` not used the special assignment operator, these functions would have allocated memory to store the value and labelled the address as `m`. The variables named `m` would effectively be isolated and distinct variables.
 
 ## <- Operator Versus <<- Operator
 
-assignment operator: <-
+assignment operator: `<-`
 
-superassignment operator: <<-
+superassignment operator: `<<-`
 
 ```R
 crazy <- function() {
